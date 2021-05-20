@@ -1,17 +1,19 @@
 import { Response, Request, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
 
+import { notAuthorized } from '@/shared'
+
 export default async (req: Request, res: Response, next: NextFunction) => {
   const { authorization } = req.headers
 
   if (!authorization) {
-    return res.status(401).json({ error: 'Token not provided' })
+    return res.adaptiveResponse(notAuthorized())
   }
 
   const [bearer, token] = authorization.split(' ')
 
   if (bearer !== 'Bearer' || !token) {
-    return res.status(401).json({ error: 'Token malformated' })
+    return res.adaptiveResponse(notAuthorized())
   }
 
   try {
@@ -21,6 +23,6 @@ export default async (req: Request, res: Response, next: NextFunction) => {
 
     return next()
   } catch (err) {
-    return res.status(401).json({ error: 'Token not authorizated' })
+    return res.adaptiveResponse(notAuthorized())
   }
 }

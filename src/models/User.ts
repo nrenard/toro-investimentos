@@ -14,7 +14,7 @@ const User = dynamoose.model('User', UserSchema)
 
 class UserModel extends BaseModel {
   async show (key: string) {
-    const user = await this.model.get(key).toJSON()
+    const user = await this.model.get(key)
 
     delete user.password
 

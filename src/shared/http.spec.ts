@@ -1,4 +1,4 @@
-import { badRequest, ok, serverError } from './index'
+import { badRequest, ok, create, serverError } from './index'
 
 describe('http Shareds', () => {
   test('Should call badRequest', () => {
@@ -26,6 +26,14 @@ describe('http Shareds', () => {
     expect(response).toMatchObject({
       body: 'teste',
       statusCode: 200
+    })
+  })
+
+  test('Should call create', () => {
+    const response = create('teste')
+    expect(response).toMatchObject({
+      body: 'teste',
+      statusCode: 201
     })
   })
 })

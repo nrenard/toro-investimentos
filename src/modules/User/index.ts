@@ -1,8 +1,10 @@
 import { Router } from 'express'
 
-import { createUser, searchUserByMail, generaToken, validPassword } from './services'
-import { CreateSession, CreateUser } from './controllers'
+import { createUser, searchUserByMail, generaToken, validPassword, getUser } from './services'
+import { CreateSession, CreateUser, GetUser } from './controllers'
 import { createUserValidate, createSessionValidate } from './validators'
+
+import authMiddleware from '@/config/middlewares/authMiddleware'
 
 const routes = Router()
 
@@ -15,6 +17,9 @@ const createUserController = new CreateUser({
   validateData: createUserValidate
 })
 routes.post(`/${prefix}`, createUserController.handle)
+
+const getUserController = new GetUser({ serviceGetUser: getUser })
+routes.get(`/${prefix}`, authMiddleware, getUserController.handle)
 
 const createSessionController = new CreateSession({
   serviceSearchUserByMail: searchUserByMail,

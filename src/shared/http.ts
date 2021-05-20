@@ -20,3 +20,8 @@ export const create = (data: any): IHttpResponse => ({
   statusCode: 201,
   body: data
 })
+
+export const notAuthorized = (): IHttpResponse => ({
+  statusCode: 401,
+  body: { error: 'Not authorized.' }
+})
