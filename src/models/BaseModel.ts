@@ -1,9 +1,4 @@
-interface IBaseModel {
-  show: (key: string) => any
-  delete: (key: string) => any
-  update: (key: string, data: any) => any
-  create: (data: any) => any
-}
+import { IBaseModel } from '@/@types/protocols'
 
 class BaseModel implements IBaseModel {
   readonly model: any

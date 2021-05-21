@@ -3,7 +3,7 @@ import { Request, Response } from 'express'
 import { IController } from '@/@types/protocols'
 import { TGetUser } from '../@types/services'
 
-import { ok, serverError } from '@/shared'
+import { badRequest, ok, serverError } from '@/shared'
 
 class GetUser implements IController {
   private readonly serviceGetUser: TGetUser
@@ -13,9 +13,11 @@ class GetUser implements IController {
   }
 
   public handle = async (req: Request, res: Response): Promise<Response> => {
-    console.log('req.userId: ', req.userId)
     try {
       const user = await this.serviceGetUser(req.userId)
+
+      if (!user) return res.adaptiveResponse(badRequest('User does not exists!'))
+
       return res.adaptiveResponse(ok(user))
     } catch (err) {
       console.error(err)

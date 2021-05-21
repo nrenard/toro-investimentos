@@ -1,7 +1,14 @@
-import { User } from '@/models'
+import { IUserModel } from '@/@types/models'
 
 import { TGetUser } from '../@types/services'
 
-const getUser: TGetUser = async (id: string) => await User.show(id)
+interface IUserFactory {
+  User: IUserModel
+}
 
-export default getUser
+const getUserFactory = ({ User }: IUserFactory) => {
+  const getUser: TGetUser = (id: string) => User.show(id)
+  return getUser
+}
+
+export default getUserFactory

@@ -1,8 +1,9 @@
+import { takeEnviroment } from '@/shared'
 import jwt from 'jsonwebtoken'
 
 import { TGenerateToken } from '../@types/services'
 
-const generaToken: TGenerateToken = async (id: string) => jwt.sign({ id }, process.env.APP_SECRET ?? '', {
+const generaToken: TGenerateToken = async (id: string) => jwt.sign({ id }, takeEnviroment('APP_SECRET'), {
   expiresIn: 86400
 })
 

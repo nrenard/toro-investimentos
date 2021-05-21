@@ -1,4 +1,4 @@
-import { badRequest, ok, create, serverError } from './index'
+import { badRequest, ok, create, serverError, notAuthorized } from './index'
 
 describe('http Shareds', () => {
   test('Should call badRequest', () => {
@@ -34,6 +34,14 @@ describe('http Shareds', () => {
     expect(response).toMatchObject({
       body: 'teste',
       statusCode: 201
+    })
+  })
+
+  test('Should call notAuthorized', () => {
+    const response = notAuthorized()
+    expect(response).toMatchObject({
+      body: { error: 'Not authorized.' },
+      statusCode: 401
     })
   })
 })

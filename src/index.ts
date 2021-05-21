@@ -1,5 +1,5 @@
 /* eslint-disable import/first */
-if (process.env.NODE_ENV === 'prod') require('module-alias/register')
+if (process.env.NODE_BUILD === 'true') require('module-alias/register')
 
 import server from './server'
 

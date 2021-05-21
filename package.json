@@ -24,6 +24,7 @@
     "@types/jsonwebtoken": "^8.5.1",
     "@types/node": "14.14.37",
     "@types/supertest": "2.0.11",
+    "@types/swagger-ui-express": "^4.1.2",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "4",
     "eslint": "7",
@@ -44,7 +45,7 @@
   },
   "scripts": {
     "build": "npx tsc -p tsconfig-build.json",
-    "start": "NODE_ENV=prod node dist/index.js",
+    "start": "NODE_BUILD=true node dist/index.js",
     "dev": "NODE_ENV=dev ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules src/index.ts",
     "test": "NODE_ENV=test jest --passWithNoTests --noStackTrace",
     "test:verbose": "NODE_ENV=test jest --passWithNoTests",

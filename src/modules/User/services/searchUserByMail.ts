@@ -1,7 +1,14 @@
-import { User } from '@/models'
+import { IUserModel } from '@/@types/models'
 
 import { TSearchUserByMail } from '../@types/services'
 
-const searchUserByMail: TSearchUserByMail = async (mail: string) => await User.findByMail(mail)
+interface IUserFactory {
+  User: IUserModel
+}
 
-export default searchUserByMail
+const searchUserByMailFactory = ({ User }: IUserFactory) => {
+  const searchUserByMail: TSearchUserByMail = async (mail: string) => await User.findByMail(mail)
+  return searchUserByMail
+}
+
+export default searchUserByMailFactory

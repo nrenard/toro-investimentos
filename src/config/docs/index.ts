@@ -2,6 +2,10 @@
 import { serve, setup } from 'swagger-ui-express'
 import { Express } from 'express'
 
+import schemas from './schemas'
+import paths from './paths'
+import * as components from './components'
+
 const documentation = {
   openapi: '3.0.0',
   info: {
@@ -14,10 +18,19 @@ const documentation = {
       url: 'https://www.linkedin.com/in/nicolasrenard1999/'
     }
   },
-  tags: []
-  // paths,
-  // schemas,
-  // components
+  securityDefinitions: {
+    bearerAuth: {
+      type: 'apiKey',
+      name: 'Authorization',
+      sheme: 'bearer',
+      in: 'header',
+      bearerFormat: 'JWT'
+    }
+  },
+  tags: ['Sessão'],
+  paths,
+  schemas,
+  components
 }
 
 export default (app: Express): void => {

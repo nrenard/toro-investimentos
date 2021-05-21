@@ -1,15 +1,23 @@
-import { User } from '@/models'
-
 import { generateHash } from '@/shared'
+
+import { IUserModel } from '@/@types/models'
 
 import { IUserData, TCreateUser } from '../@types/services'
 
-const createUser: TCreateUser = async (data: IUserData) => {
-  const password = await generateHash(data.password)
-
-  const user = await User.create({ ...data, password })
-
-  return user
+interface IUserFactory {
+  User: IUserModel
 }
 
-export default createUser
+const createUserFactory = ({ User }: IUserFactory) => {
+  const createUser: TCreateUser = async (data: IUserData) => {
+    const password = await generateHash(data.password)
+
+    const user = await User.create({ ...data, password })
+
+    return user
+  }
+
+  return createUser
+}
+
+export default createUserFactory

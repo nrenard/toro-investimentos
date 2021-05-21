@@ -1,7 +1,6 @@
+import { takeEnviroment } from '@/shared'
 import * as dynamoose from 'dynamoose'
 
-const { NODE_ENV } = process.env
-
 export default (): void => {
-  if (NODE_ENV !== 'prod') dynamoose.aws.ddb.local()
+  if (takeEnviroment('NODE_ENV') !== 'prod') dynamoose.aws.ddb.local(takeEnviroment('DYNAMO_DB_HOST') || undefined)
 }
