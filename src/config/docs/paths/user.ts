@@ -30,7 +30,10 @@ export const userPath = {
         $ref: '#/components/serverError'
       }
     }
-  },
+  }
+}
+
+export const usersDetailPath = {
   get: {
     security: [{
       apiKeyAuth: []

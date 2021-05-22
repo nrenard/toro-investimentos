@@ -19,7 +19,7 @@ const createUserController = new CreateUser({
 routes.post(`/${prefix}`, createUserController.handle)
 
 const getUserController = new GetUser({ serviceGetUser: getUser })
-routes.get(`/${prefix}`, authMiddleware, getUserController.handle)
+routes.get(`/${prefix}/detail`, authMiddleware, getUserController.handle)
 
 const createSessionController = new CreateSession({
   serviceSearchUserByMail: searchUserByMail,

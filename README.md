@@ -6,29 +6,35 @@
 - Jest
 - Typescript
 - Node
+- Dynamoose
+- Joi
 
 ### <strong>Árvore do código fonte:</strong>
 
 ```
   src
-  |-- __mocks__
-  |-- __tests__
   |-- @types
   |-- config
-  |-- documentation
+  |-- models
   |-- modules
   |-- shared
-  |-- routes
-  |-- services
   |-- server.ts
   |-- index.ts
 ```
 
-## Instalação
+<br/>
 
-Requisitos para rodar o projeto nodeJS >= 14. Clonar repositório, entrar na pasta e instalar suas dependências com o comando `yarn` ou `npm install` e copiar o arquivo `.env.example` para `.env`.
+## Instalação ambiente de desenvolvimento
 
-Obs: Para entrar na documentação após rodar o servidor acessar a rota `/docs`.
+Requisitos para rodar o projeto nodeJS >= 14. Clonar repositório, entrar na pasta e instalar suas dependências com o comando `yarn` ou `npm install` e copiar o arquivo `.env.example` para `.env` configurando as variáveis de acordo com o ambiente.
+
+<br/>
+
+## Instalação usando docker compose
+
+Rodar na pasta raiz do projeto o comando `docker-compose up`.
+
+> Obs: Para entrar na documentação da api, após iniciar o servidor acessar a rota `/docs`.
 
 
 ## Scripts
@@ -56,7 +62,7 @@ Obs: Para entrar na documentação após rodar o servidor acessar a rota `/docs`
 
   > `npm run test:unit`
 
-  <b>Rodar testes de integração</b>
+  <b>Rodar testes de integração `(Obs: não tive tempo para desenvolver testes de integração)`</b>
 
   > `npm run test:integration`
 

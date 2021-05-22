@@ -1,7 +1,8 @@
 import { sessionPath } from './session'
-import { userPath } from './user'
+import { userPath, usersDetailPath } from './user'
 
 export default {
   '/session': sessionPath,
-  '/users': userPath
+  '/users': userPath,
+  '/users/detail': usersDetailPath
 }
