@@ -8,6 +8,8 @@
 - Node
 - Dynamoose
 - Joi
+- Husky
+- Lint Staged
 
 ### <strong>Árvore do código fonte:</strong>
 
